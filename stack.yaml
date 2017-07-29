@@ -1,0 +1,4 @@
+# http://taylor.fausak.me/2017/05/17/testing-ghc-release-candidates-with-stack/
+resolver: lts-9.0
+compiler: ghc-8.2.1
+compiler-check: match-exact

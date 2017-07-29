@@ -1,3 +1,6 @@
+.PHONY: all
+all: main/Main main/Main.hi main/Main.o regex/Regex.hi regex/Regex.o
+
 ma%n/Main \
 	ma%n/Main.hi \
 	ma%n/Main.o \

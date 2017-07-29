@@ -1,3 +1,5 @@
+-- http://blog.ezyang.com/2016/10/try-backpack-ghc-backpack/
+
 unit regex where
     module Regex where
         -- | A type of regular expressions.

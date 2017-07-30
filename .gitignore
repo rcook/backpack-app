@@ -1,5 +1,5 @@
 /.stack-work/
-/bar/
-/foo/
+/foo-indef/
+/foo-int/
+/foo-string/
 /main/
-/qux/

@@ -1,24 +1,24 @@
 .PHONY: all
 all: \
-	bar/Str.hi \
-	bar/Str.o \
-	foo/Foo.hi \
-	foo/Str.hi \
+	foo-indef/Foo.hi \
+	foo-indef/Str.hi \
+	foo-int/Str.hi \
+	foo-int/Str.o \
+	foo-string/Str.hi \
+	foo-string/Str.o \
 	main/Main.exe \
 	main/Main.hi \
-	main/Main.o \
-	qux/Str.hi \
-	qux/Str.o
+	main/Main.o
 
-ba%/Str.hi \
-	ba%/Str.o \
-	fo%/Foo.hi \
-	fo%/Str.hi \
-	mai%/Main.exe \
-	mai%/Main.hi \
-	mai%/Main.o \
-	qu%/Str.hi \
-	qu%/Str.o: \
+%oo-indef/Foo.hi \
+%oo-indef/Str.hi \
+%oo-int/Str.hi \
+%oo-int/Str.o \
+%oo-string/Str.hi \
+%oo-string/Str.o \
+%ain/Main.exe \
+%ain/Main.hi \
+%ain/Main.o: \
 	foo.bkp
 	stack exec -- ghc --backpack $?
 

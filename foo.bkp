@@ -1,6 +1,6 @@
 -- http://blog.ezyang.com/2016/10/try-backpack-ghc-backpack/
 
-unit foo where
+unit foo-indef where
     signature Str where
         data Str
         len :: Str -> Int
@@ -11,14 +11,14 @@ unit foo where
         theLength :: Str -> Int
         theLength = len
 
-unit bar where
+unit foo-string where
     module Str where
         type Str = String
 
         len :: Str -> Int
         len = length
 
-unit qux where
+unit foo-int where
     module Str where
         type Str = [Int]
 
@@ -26,12 +26,12 @@ unit qux where
         len = length
 
 unit main where
-    dependency foo[Str=bar:Str] (Foo as Foo.String)
-    dependency foo[Str=qux:Str] (Foo as Foo.Int)
+    dependency foo-indef[Str=foo-int:Str] (Foo as Foo.Int)
+    dependency foo-indef[Str=foo-string:Str] (Foo as Foo.String)
 
     module Main (main) where
-        import qualified Foo.String
         import qualified Foo.Int
+        import qualified Foo.String
 
         main :: IO ()
         main = do

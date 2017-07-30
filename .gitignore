@@ -1,3 +1,5 @@
 /.stack-work/
+/bar/
+/foo/
 /main/
-/regex/
+/qux/

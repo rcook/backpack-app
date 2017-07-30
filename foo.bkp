@@ -1,0 +1,39 @@
+-- http://blog.ezyang.com/2016/10/try-backpack-ghc-backpack/
+
+unit foo where
+    signature Str where
+        data Str
+        len :: Str -> Int
+
+    module Foo (theLength) where
+        import Str
+
+        theLength :: Str -> Int
+        theLength = len
+
+unit bar where
+    module Str where
+        type Str = String
+
+        len :: Str -> Int
+        len = length
+
+unit qux where
+    module Str where
+        type Str = [Int]
+
+        len :: Str -> Int
+        len = length
+
+unit main where
+    dependency foo[Str=bar:Str] (Foo as Foo.String)
+    dependency foo[Str=qux:Str] (Foo as Foo.Int)
+
+    module Main (main) where
+        import qualified Foo.String
+        import qualified Foo.Int
+
+        main :: IO ()
+        main = do
+            print $ Foo.String.theLength "Hello world"
+            print $ Foo.Int.theLength [1, 2, 3]
